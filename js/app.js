@@ -38,7 +38,9 @@ manageActiveSection = () => {
     window.scrollY < sections[sectionsNumber].offsetTop
   ) {}
 
-  allLinks.forEach((link) => link.classList.remove('active'));
+  allLinks.forEach((link) => {
+    link.classList.remove('active')
+  });
   // Add class 'active' to section when near top of viewport
 
   allLinks[sectionsNumber].classList.add('active');
