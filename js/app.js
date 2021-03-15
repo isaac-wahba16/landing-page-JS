@@ -2,8 +2,6 @@
 
 const sections = document.querySelectorAll("section");
 const navigationUl = document.getElementById("navbar__list");
-
-//using flexbox classes to handle responsiveness.
 navigationUl.setAttribute("class", "container");
 
 // build the nav
@@ -39,7 +37,7 @@ manageActiveSection = () => {
 
   while (
     --sectionsNumber &&
-    window.scrollY < sections[sectionsNumber].offsetTop
+    window.scrollY + 50 < sections[sectionsNumber].offsetTop
   ) {}
 
   allLinks.forEach((link) => {
@@ -53,6 +51,8 @@ manageActiveSection = () => {
 //Scrolling to a section
 
 const manageScrolling = () => {
+  this.manageActiveSection();
+
   allLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
@@ -65,7 +65,7 @@ const manageScrolling = () => {
 };
 
 // Scroll to section on link click
-manageScrolling();
 manageActiveSection();
+manageScrolling();
 
 window.addEventListener("scroll", manageActiveSection);
