@@ -5,7 +5,7 @@
 
 * [Project Info](#about)
 * [Starter Template](#template)
-* [To start the project](#start)
+* [Start](#start)
 
 ## About
 
