@@ -1,18 +1,22 @@
 /** @format */
 
-const sections = document.querySelectorAll('section');
-const navigationUl = document.getElementById('navbar__list');
+const sections = document.querySelectorAll("section");
+const navigationUl = document.getElementById("navbar__list");
+
+//using flexbox classes to handle responsiveness.
+navigationUl.setAttribute("class", "container");
 
 // build the nav
 addNavElements = () => {
   const sectionsNavFragment = document.createDocumentFragment();
   sections.forEach((section) => {
-    const navElement = document.createElement('li');
-    const linkToSection = document.createElement('a');
-    linkToSection.innerText = section.getAttribute('data-nav');
-    const sectionId = section.getAttribute('id');
+    const navElement = document.createElement("li");
+    const linkToSection = document.createElement("a");
+    linkToSection.innerText = section.getAttribute("data-nav");
+    const sectionId = section.getAttribute("id");
     // Scroll to anchor ID using scrollTO event
-    linkToSection.setAttribute('href', `#${sectionId}`);
+    linkToSection.setAttribute("href", `#${sectionId}`);
+    linkToSection.setAttribute("class", `#${sectionId}`);
     navElement.appendChild(linkToSection);
     sectionsNavFragment.appendChild(navElement);
   });
@@ -29,7 +33,7 @@ addNavElements();
  */
 
 // Set sections as active
-const allLinks = document.querySelectorAll('a');
+const allLinks = document.querySelectorAll("a");
 manageActiveSection = () => {
   let sectionsNumber = sections.length;
 
@@ -39,14 +43,29 @@ manageActiveSection = () => {
   ) {}
 
   allLinks.forEach((link) => {
-    link.classList.remove('active')
+    link.classList.remove("active");
   });
   // Add class 'active' to section when near top of viewport
 
-  allLinks[sectionsNumber].classList.add('active');
+  allLinks[sectionsNumber].classList.add("active");
 };
 
-manageActiveSection();
-// Scroll to section on link click
+//Scrolling to a section
 
-window.addEventListener('scroll', manageActiveSection);
+const manageScrolling = () => {
+  allLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+};
+
+// Scroll to section on link click
+manageScrolling();
+manageActiveSection();
+
+window.addEventListener("scroll", manageActiveSection);
