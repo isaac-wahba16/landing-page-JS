@@ -35,7 +35,7 @@ manageActiveSection = () => {
 
   while (
     --sectionsNumber &&
-    window.scrollY + 50 < sections[sectionsNumber].offsetTop
+    window.scrollY < sections[sectionsNumber].offsetTop
   ) {}
 
   allLinks.forEach((link) => link.classList.remove('active'));
