@@ -15,7 +15,7 @@
 
   Link to starter template. [Here](https://github.com/udacity/fend/tree/refresh-2019)
   
-## Start the project
+## Start
   To run the project, open `index.html` file.
 
 
